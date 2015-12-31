@@ -101,7 +101,7 @@ class User(BaseModel):
     @classmethod
     def get_by_key(cls, key):
         session = DBSession()
-        return session.query(cls).filter(cls.key==str(key or b'', 'utf-8')).first()
+        return session.query(cls).filter(cls.key==str(key or b'').encode('utf-8')).first()
 
     @classmethod
     def get_by_username(cls, username):
